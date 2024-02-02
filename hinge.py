@@ -22,11 +22,13 @@ def hinge(w,xTr,yTr,lambdaa):
    gradient = np.zeros((np.shape(w)[0], 1))
    loss = 0
    
-   for i in range(np.shape(xTr)[1]):
-     loss = loss + max(0, 1 - yTr[0,i]) * y_hat[i,0]
-     
+   for i in range(np.shape(yTr)[1]):
+         loss = loss + max(0, 1 - yTr[0,i] * y_hat[i,0])
+         if 1 - yTr[0,i] * y_hat[i,0] > 0:
+            gradient = gradient - (yTr[0,i] * xTr[:,i]).reshape(w.shape[0], 1)
+
    loss = loss + lambdaa * (w.T @ w)
-   gradient += 2 * lambdaa * w - xTr @ yTr.T
+   gradient = gradient + 2 * lambdaa * w
      
    
    return loss, gradient
