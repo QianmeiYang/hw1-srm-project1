@@ -29,7 +29,7 @@ def trainspamfilter(xTr,yTr):
     f = lambda w: logistic(w, xTr, yTr)
     #f = lambda w: ridge(w, xTr, yTr, 0.1)
     #w_trained = grdescent(f, np.zeros((xTr.shape[0],1)), 1e-01, 1000) #hinge
-    w_trained = grdescent(f,np.zeros((xTr.shape[0],1)), 1e-01, 1000) #ridge,logistic
+    w_trained = grdescent(f,np.zeros((xTr.shape[0],1)), 1e-03, 1000) #ridge,logistic
 
     io.savemat('w_trained.mat', mdict={'w': w_trained})
     return w_trained
