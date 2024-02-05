@@ -7,7 +7,7 @@ import hashlib
 
 def tokenizedata(directory='data/data_train',output='default'):
 
-    HASHBUCKETS=2**10   # you can play with this parameter
+    HASHBUCKETS=2**15   # you can play with this parameter
 
     ind=[x.split() for x in open(directory+'/index').read().split('\n') if len(x)>0] # read in index file
     num_features = HASHBUCKETS
